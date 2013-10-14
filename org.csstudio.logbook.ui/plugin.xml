@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.csstudio"
+            name="CSS">
+      </category>
+      <view
+            category="org.csstudio"
+            class="org.csstudio.logbook.ui.ELogEntryView"
+            icon="icons/logentry-add-16.png"
+            id="org.csstudio.logbook.ui.ELogEntryView"
+            name="%MakeLogEntry"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:utility">
+         <command
+               commandId="org.eclipse.ui.views.showView"
+               icon="icons/logentry-add-16.png"
+               label="%MakeLogEntry"
+               style="push">
+            <parameter
+                  name="org.eclipse.ui.views.showView.viewId"
+                  value="org.csstudio.logbook.ui.ELogEntryView">
+            </parameter>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true"/>
+   </extension>
+</plugin>
