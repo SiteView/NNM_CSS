@@ -8,7 +8,10 @@
 package org.csstudio.opibuilder.widgets.model;
 
 import org.csstudio.opibuilder.properties.BooleanProperty;
+import org.csstudio.opibuilder.properties.StringProperty;
 import org.csstudio.opibuilder.properties.WidgetPropertyCategory;
+import org.csstudio.opibuilder.util.WidgetDescriptor;
+import org.csstudio.opibuilder.util.WidgetsService;
 
 
 /**
@@ -18,7 +21,10 @@ import org.csstudio.opibuilder.properties.WidgetPropertyCategory;
  */
 public class LEDModel extends AbstractBoolWidgetModel {
 
-	
+	/**
+	 * The lampID of the widget lamp.
+	 */
+	public static final String PROP_LAMPID = "lampID";//$NON-NLS-1$
 	
 	/** The ID of the effect 3D property. */
 	public static final String PROP_EFFECT3D = "effect_3d"; //$NON-NLS-1$
@@ -44,7 +50,12 @@ public class LEDModel extends AbstractBoolWidgetModel {
 	@Override
 	protected void configureProperties() {
 		super.configureProperties();
-		
+		WidgetDescriptor descriptor = WidgetsService.getInstance().getWidgetDescriptor(getTypeID());
+		String lampID;
+		lampID = descriptor == null? getTypeID().substring(getTypeID().lastIndexOf(".")+1) :
+			descriptor.getName();
+		addProperty(new StringProperty(PROP_LAMPID, "lampID", 
+				WidgetPropertyCategory.Basic, lampID));
 		addProperty(new BooleanProperty(PROP_EFFECT3D, "3D Effect", 
 				WidgetPropertyCategory.Display, true));
 		
@@ -74,5 +85,13 @@ public class LEDModel extends AbstractBoolWidgetModel {
 	 */
 	public boolean isSquareLED() {
 		return (Boolean) getProperty(PROP_SQUARE_LED).getPropertyValue();
+	}
+	
+	public String getLampID(){
+		return (String)getCastedPropertyValue(PROP_LAMPID);
+	}
+	
+	public void setLampID(String lampID){
+		setPropertyValue(PROP_LAMPID, lampID);
 	}
 }

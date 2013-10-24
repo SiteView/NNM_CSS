@@ -32,6 +32,7 @@ public class LEDEditPart extends AbstractBoolEditPart{
 		initializeCommonFigureProperties(led, model);			
 		led.setEffect3D(model.isEffect3D());
 		led.setSquareLED(model.isSquareLED());
+		led.setLampID(model.getLampID());
 		return led;
 		
 		
