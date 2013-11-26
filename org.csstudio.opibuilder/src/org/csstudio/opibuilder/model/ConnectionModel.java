@@ -237,7 +237,7 @@ public class ConnectionModel extends AbstractWidgetModel {
 		removeProperty(PROP_BORDER_WIDTH);
 		removeProperty(PROP_VISIBLE);
 		removeProperty(PROP_ENABLED);
-		removeProperty(PROP_TOOLTIP);
+//		removeProperty(PROP_TOOLTIP);
 		removeProperty(PROP_ACTIONS);
 		removeProperty(PROP_FONT);
 		removeProperty(PROP_XPOS);
